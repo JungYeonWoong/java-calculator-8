@@ -13,7 +13,7 @@ public class StringCalculator {
         List<Integer> numbers = NumberParse.parse(input);
         return numbers.stream()
                 .mapToInt(Integer::intValue)
-                .sum();
+                .sum();  // 문자열 덧셈 구현
     }
 
     private boolean isBlank(String input) {
