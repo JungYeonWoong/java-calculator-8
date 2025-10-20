@@ -13,7 +13,7 @@ public class Delimiter {
         if (input.startsWith("//")) {
             String[] parts = input.split("\n", 2);
 
-            if (parts.length < 2) {
+            if (parts.length < 2) { // 예외 처리 구현
                 throw new IllegalArgumentException("커스텀 구분자 형식이 잘못되었습니다.");
             }
 

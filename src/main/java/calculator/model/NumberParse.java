@@ -13,13 +13,13 @@ public class NumberParse {
                     .map(Integer::parseInt)
                     .peek(NumberParse::validateNumber)
                     .collect(Collectors.toList());
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) { // 예외 처리 구현
             throw new IllegalArgumentException("숫자가 아닌 값이 포함되어 있습니다.");
         }
     }
 
     private static void validateNumber(int num) {
-        if (num < 0) {
+        if (num < 0) { // 예외 처리 구현
             throw new IllegalArgumentException("음수값은 허용되지 않습니다.");
         }
     }
