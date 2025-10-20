@@ -7,29 +7,33 @@
 - 입력 값이 `null` 이거나 빈 문자열일 경우 결과로 0을 반환한다.
 - 입력 값에 공백이 포함되어 있는 경우를 trim() 처리한다.
 
-
 2️ 기본 구분자 처리
-- 기본 구분자인 쉼표(,)와 콜론(:)으로 문자열을 분리한다.
+- Delimiter 클래스에서 기본 구분자 ","와 ":"로 split한다.
+- StringCalculator가 이 Delimiter를 사용하도록 연결한다. 
   ️
 3️⃣ 커스텀 구분자 처리
+- "//;\n1;2" 형식의 입력 처리한다.
+- Delimiter.split()에서 "//"와 "\n" 사이 구분자 추출한다.
+- Pattern.quote()로 안전하게 split한다.
 
-
-2️ 기본 구분자 처리
-- 기본 구분자인 쉼표(,)와 콜론(:)으로 문자열을 분리한다.
-  ️
-3️⃣ 커스텀 구분자 처리
-- 커스텀 구분자는 입력 문자열의 시작 부분에 "//"와 "\n" 사이에 정의된다.
-
-4️⃣ 문자열 파싱 및 정수로 형 변환
-- 각 요소를 정수(int)로 변환한다.
-- 음수나 숫자가 아닌 값이 포함되어 있으면 IllegalArgumentException을 발생시킨다.
-
+4️⃣ 문자열 파싱 및 검증
+- NumberParse.parse() 생성
+- 문자열 배열을 정수 리스트로 변환 (Integer.parseInt)
+- 음수 → IllegalArgumentException
+- 비숫자 입력 → NumberFormatException → IllegalArgumentException
+- 
 5️⃣ 덧셈 기능 구현
-- 출력 포맷에 맞게 출력한다.
+- 파싱된 숫자 리스트를 합산한다. (sum())
+- 최종 결과를 반환한다. 이때, 출력 형식을 주의한다.
 
-6️⃣ 예외 처리
-- IllegalArgumentException 발생시키고 프로그램을 종료한다.
-- 라이브러리의 코드 뜯어 보기, Java 표준 라이브러리에 이미 존재하는 예외와 다른지 비교
+6️⃣ 출력 기능 구현
+- OutputView.printResult() 작성 (“결과 : n” 형식)
+- Controller에서 호출
+
+7️⃣ 예외 처리 통합
+- IllegalArgumentException 발생 시 프로그램 종료
+- Controller에서는 try/catch 제거 → 테스트에서 직접 감지
+- 예외 메시지는 OutputView에서 출력하도록 남김
 
 ## 📌 과제 진행 순서
 
