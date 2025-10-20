@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
-    void 커스텀_구분자_사용() {
+    void custom_test() {
         assertSimpleTest(() -> {
             run("//;\\n1");
             assertThat(output()).contains("결과 : 1");
@@ -17,12 +17,29 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void ex_test() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("-1,2,3"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("-1,2,3"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    void ex2_test() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1,2,3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    void ex3_test() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//;n1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+
 
     @Override
     public void runMain() {
