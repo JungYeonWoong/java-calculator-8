@@ -9,7 +9,7 @@ public class StringCalculator {
         if (isBlank(input)) {
             return 0;
         }
-
+// 문자열 파싱 구현
         List<Integer> numbers = NumberParse.parse(input);
         return numbers.stream()
                 .mapToInt(Integer::intValue)
