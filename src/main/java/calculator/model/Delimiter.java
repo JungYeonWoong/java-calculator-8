@@ -9,6 +9,7 @@ public class Delimiter {
         // 콘솔에서 \n 입력 시 \\n으로 전달됨
         input = input.replace("\\n", "\n");
 
+        // 커스텀 구분자 처리 구현
         if (input.startsWith("//")) {
             String[] parts = input.split("\n", 2);
 
